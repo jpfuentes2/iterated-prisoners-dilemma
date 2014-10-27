@@ -4,8 +4,8 @@ require 'hamster/hash'
 def list; Hamster.list; end
 
 module Prisoner
-  def prisoner(name, strategy, moves = Hamster.list, scores = Hamster.list)
-    Hamster.hash(name: name, strategy: strategy, moves: moves, scores: scores)
+  def prisoner(name, strategy)
+    Hamster.hash(name: name, strategy: strategy, moves: Hamster.list, total: 0)
   end
 end
 
@@ -25,35 +25,35 @@ module Moves
 end
 
 module Game
-  def game(a, z)
-    moves_a = a[:strategy].(a, z)
-    moves_z = z[:strategy].(z, a)
-
-    Hamster.list(
-      a.put(:moves, moves_a),
-      z.put(:moves, moves_z)
-    )
-  end
-
-  def iterated_game(iterations, a, z)
-    (1..iterations).reduce(Hamster.list(a,z)) do |prisoners, _|
-      game(prisoners.head, prisoners.last)
+  def to_both(prisoners)
+    prisoners.zip(prisoners.reverse).map do |mover, opp|
+      yield mover, opp
     end
   end
 
-  def score(a, z)
-    a.zip(z).reduce(Hamster.hash(a: list, z: list)) do |scores, (move_a, move_z)|
-      score_a = compute_score(move_a, move_z)
-      score_z = compute_score(move_z, move_a)
-
-      Hamster.hash(
-        a: scores[:a].cons(score_a),
-        z: scores[:z].cons(score_z)
-      )
+  def game(prisoners)
+    to_both(prisoners) do |mover, opp|
+      move = mover[:strategy].(mover, opp)
+      mover.put(:moves, move)
     end
   end
 
-  def compute_score(a, z)
+  def iterated_game(iterations, prisoners)
+    (1..iterations).reduce(prisoners) do |prisoners, _|
+      total_score(game(prisoners))
+    end
+  end
+
+  def total_score(prisoners)
+    to_both(prisoners) do |mover, opp|
+      score = mover[:moves].zip(opp[:moves]).reduce(0) do |score, (m, o)|
+        score += compute_score(m, o)
+      end
+      mover.put(:total, score)
+    end
+  end
+
+  def compute_score(a, b)
     @scores ||= {
       [0, 1] => 5,
       [1, 1] => 3,
@@ -61,17 +61,16 @@ module Game
       [1, 0] => 0
     }
 
-    @scores[[a,z]]
+    @scores[[a,b]]
   end
 end
 
 [Prisoner, Moves, Strategy, Game].each { |m| include m }
 
-a = prisoner(:a, strategy(method(:always_cooperate)))
-z = prisoner(:z, strategy(method(:always_defect)))
+prisoners = iterated_game(10, Hamster.list(
+  prisoner(:a, strategy(method(:always_cooperate))),
+  prisoner(:b, strategy(method(:always_defect)))
+))
 
-a, z = iterated_game(10, a, z)
-scores = score(a[:moves], z[:moves])
-
-puts "Prisoner A (AlwaysCooperate): %d" % scores[:a].sum
-puts "Prisoner B (AlwaysDefect)   : %d" % scores[:z].sum
+puts "Prisoner A (AlwaysCooperate): %d" % prisoners.head[:total]
+puts "Prisoner B (AlwaysDefect)   : %d" % prisoners.last[:total]
