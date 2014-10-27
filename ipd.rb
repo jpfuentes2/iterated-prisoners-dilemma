@@ -20,8 +20,8 @@ module Strategy
 end
 
 module Moves
-  def cooperate(moves); moves.cons(1); end
-  def defect(moves); moves.cons(0); end
+  def cooperate(moves); 1; end
+  def defect(moves); 0; end
 end
 
 module Game
@@ -34,7 +34,7 @@ module Game
   def game(prisoners)
     to_both(prisoners) do |mover, opp|
       move = mover[:strategy].(mover, opp)
-      mover.put(:moves, move)
+      mover.put(:moves, mover[:moves].cons(move))
     end
   end
 
