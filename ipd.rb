@@ -1,8 +1,6 @@
 require 'hamster/list'
 require 'hamster/hash'
 
-def list; Hamster.list; end
-
 module Prisoner
   def prisoner(name, strategy)
     Hamster.hash(name: name, strategy: strategy, moves: Hamster.list, total: 0)
