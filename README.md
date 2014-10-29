@@ -63,6 +63,26 @@ JUST KIDDING!!
 * Scala: roll the dice!
 * Clojure: lein with `lein-exec` should do it
 
+## Language-specific notes
+
+### Go
+* Less functional than most examples given I'm using pointers and constantly mutating the prisoner struct fields. This is closer to the Gopher way.
+* Decision type is a uint because Go has no ADTs and limited polymorphism
+* No ADTs means I cannot enforce strategy functions to return a Decision type which means I cannot eliminate invalid states in this program if new users created new strategies. Of course, I could use interface{} + type assertions and check invariants at run-time, but that would be verbose. This singular piece of code highlights the simplicity of Go's type system.
+* Pattern matching for the score matrix would be nice.
+
+### Clojure
+* Like Go, it uses a uint for defect/cooperate values rather than types since we're in a dynamic language.
+* Thrush/threading/pipe macros are the reader's friend.
+* The more I use statically typed languages the more I find a preference for them but working in Clojure is very pleasing.
+* I'd love to get feedback from people who've never done Lisp/Clojure/Dynamically typed languages -- can you follow the code?
+
+### Scala
+* Defining ADTs is about as verbose as common Go
+* I could drop many of the type annotations but probably not all due to limited type inference. Some Scala pros recommend writing most annotations esp. for public APIs.
+* I think the use of traits + case objects make sense for defining the strategy implementations. Any thoughts here?
+* Scala's type alias (for History or List[A]) is annoying because we don't have access to the alias'd companion object -- notice I have to write History.empty even though List.empty exists
+
 ## Thanks
 
 Special thanks to [@joxn](https://github.com/joxn) for improving the
