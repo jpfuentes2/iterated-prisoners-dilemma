@@ -65,13 +65,13 @@ JUST KIDDING!!
 
 Languages currently implemented and the contributor:
 
-* Haskell: @jpfuentes2
-* Scala: @jpfuentes2
-* Ruby: @jpfuentes2
-* Clojure: @jpfuentes2
-* Go: @jpfuentes2
-* PHP: @jpfuentes2
-* OCaml: @tizoc
+* Haskell: [@jpfuentes2](https://github.com/jpfuentes2)
+* Scala: [@jpfuentes2](https://github.com/jpfuentes2)
+* Ruby: [@jpfuentes2](https://github.com/jpfuentes2)
+* Clojure: [@jpfuentes2](https://github.com/jpfuentes2)
+* Go: [@jpfuentes2](https://github.com/jpfuentes2)
+* PHP: [@jpfuentes2](https://github.com/jpfuentes2)
+* OCaml: [@tizoc](https://github.com/tizoc)
 
 ### Dependencies
 
@@ -106,7 +106,7 @@ Languages currently implemented and the contributor:
 
 A big thank you to these contributors:
 
-* @tizoc
+* [@tizoc](https://github.com/tizoc)
 
 Also, thanks to [@joxn](https://github.com/joxn) for improving the
 Haskell version. You can see my initial pathetic attempt [here](https://gist.github.com/jpfuentes2/9317779#file-ipd-hs).
