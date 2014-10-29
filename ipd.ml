@@ -28,4 +28,4 @@ let () =
   let results = play 10 always_coop always_defect in
   let coop_scores, defect_scores = score_game results in
   Printf.printf "Prisoner A (AlwaysCooperate): %d\n" coop_scores;
-  Printf.printf "Prisoner B (AlwaysDefect):    %d\n" defect_scores
+  Printf.printf "Prisoner B (AlwaysDefect)   : %d\n" defect_scores
