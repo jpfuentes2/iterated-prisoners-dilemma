@@ -2,6 +2,8 @@
 
 This is my attempt at implementing the [IPD](http://en.wikipedia.org/wiki/Prisoner%27s_dilemma#The_iterated_prisoners.27_dilemma) algorithim in multiple languages. Originally, I chose Ruby, Go, Scala, Clojure, and Haskell as target languages. Each implementation is either functional in nature or with low ceremony.
 
+Presently, only two strategies are available in each of the languages: `AlwaysCooperate` and `AlwaysDefect` which do what you'd expect: *constantly* move respective of the name. Thus, the winner from 10 iterations is `AlwaysDefect` and the score should be 50 to 0. Some day I may improve on the examples by adding new and more challenging strategies.
+
 My *hope* is that contributors and/or I will add more languages!
 
 > The iterated prisoners' dilemma game is fundamental to certain theories of human cooperation and trust. On the assumption that the game can model transactions between two people requiring trust, cooperative behaviour in populations may be modeled by a multi-player, iterated, version of the game. It has, consequently, fascinated many scholars over the years. In 1975, Grofman and Pool estimated the count of scholarly articles devoted to it at over 2,000. The iterated prisoners' dilemma has also been referred to as the "Peace-War game".[8]
