@@ -20,6 +20,10 @@ echo "-- Scala --"
 scala ipd.scala
 echo
 
+echo "-- OCaml --"
+ocaml ipd.ml
+echo
+
 echo "-- PHP --"
 php ipd.php
 echo
