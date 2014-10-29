@@ -63,24 +63,15 @@ JUST KIDDING!!
 
 ## Languages
 
-Languages currently implemented and the contributor:
-
-* Haskell: [@jpfuentes2](https://github.com/jpfuentes2)
-* Scala: [@jpfuentes2](https://github.com/jpfuentes2)
-* Ruby: [@jpfuentes2](https://github.com/jpfuentes2)
-* Clojure: [@jpfuentes2](https://github.com/jpfuentes2)
-* Go: [@jpfuentes2](https://github.com/jpfuentes2)
-* PHP: [@jpfuentes2](https://github.com/jpfuentes2)
-* OCaml: [@tizoc](https://github.com/tizoc)
-
-### Dependencies
-
-* PHP: roll the dice!
-* Ruby: >= 2.0
-* Haskell: roll the dice!
-* Scala: roll the dice!
-* Clojure: lein with `lein-exec` should do it
-* OCaml: roll the dice!
+| Language | Contributor | Deps/Version |
+| -------- | ----------- | ------- |
+| Haskell | [@jpfuentes2](https://github.com/jpfuentes2) | roll the dice! |
+| Scala | [@jpfuentes2](https://github.com/jpfuentes2) | roll the dice!
+| Ruby | [@jpfuentes2](https://github.com/jpfuentes2) | >= 2.0
+| Clojure | [@jpfuentes2](https://github.com/jpfuentes2) | `lein exec`
+| Go | [@jpfuentes2](https://github.com/jpfuentes2) | >= 1.0
+| PHP | [@jpfuentes2](https://github.com/jpfuentes2) | roll the dice!
+| OCaml | [@tizoc](https://github.com/tizoc) | roll the dice! |
 
 ### Notes
 
