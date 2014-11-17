@@ -57,6 +57,10 @@ Prisoner B (AlwaysDefect): 50
 Prisoner A (AlwaysCooperate): 0
 Prisoner B (AlwaysDefect):    50
 
+-- Swift --
+Prisoner A (Always Cooperate): 0
+Prisoner B (Always Defect):    50
+
 -- PHP --
 JUST KIDDING!!
 ```
@@ -72,6 +76,7 @@ JUST KIDDING!!
 | Go | [@jpfuentes2](https://github.com/jpfuentes2) | >= 1.0
 | PHP | [@jpfuentes2](https://github.com/jpfuentes2) | roll the dice!
 | OCaml | [@tizoc](https://github.com/tizoc) | roll the dice! |
+| OCaml | [@andredublin](https://github.com/andredublin) | Xcode 6 |
 
 ### Notes
 

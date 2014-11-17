@@ -22,10 +22,6 @@ struct AlwaysCooperate : Strategy {
 struct Trial {
 	let mover: Int, opp: Int
 	
-	/*
-	 * Subscript are shortcuts for accessing the member elements of a collection, list, or sequence
-	 * More @ https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Subscripts.html
-	 */
 	subscript() -> Int {
 		get {
 			switch (mover, opp) {
@@ -62,25 +58,12 @@ class Prisoner : Strategy {
 }
 
 func runGame(prisoners: [Prisoner], times: Int) {
-	/*
-	 * Nested function that takes a function as a paramter.
-	 * For void return types you have to include the "-> ()" syntax.
-	 * Unlike global or nested functions with void return types that do not require it.
-	 */
 	func toBoth(ps: [Prisoner], fn: (mover: Prisoner, opp: Prisoner) -> ()) {
 		fn(mover: ps[0], opp: ps[1])
 		fn(mover: ps[1], opp: ps[0])
 	}
 	
-	/*
-	 * Exclusive for in loop (i in 0..<Array)
-	 */
 	for i in 0..<times {
-		/*
-		 * Closure Syntax
-		 * { (paramters) -> return type in statements }
-		 * More @ https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html
-		 */
 		toBoth(prisoners, { (mover: Prisoner, opp: Prisoner) in
 			mover.decisions.append(mover.move(opp).rawValue)
 		})
@@ -103,8 +86,8 @@ func main() {
 	
 	runGame(prisoners, 10)
 	
-	println("Prisoner A (Always Cooperate): \(prisoners[0].totalScore)")
-	println("Prisoner B (Always Defect): \(prisoners[1].totalScore)")
+	println("Prisoner A (AlwaysCooperate): \(prisoners[0].totalScore)")
+	println("Prisoner B (AlwaysDefect): \(prisoners[1].totalScore)")
 }
 
 main()
