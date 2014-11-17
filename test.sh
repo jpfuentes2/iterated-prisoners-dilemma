@@ -24,6 +24,10 @@ echo "-- OCaml --"
 ocaml ipd.ml
 echo
 
+echo "-- Swift --"
+echo "Doh! Run in Xcode"
+echo
+
 echo "-- PHP --"
 php ipd.php
 echo
