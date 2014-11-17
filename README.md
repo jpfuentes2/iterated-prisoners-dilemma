@@ -76,7 +76,7 @@ JUST KIDDING!!
 | Go | [@jpfuentes2](https://github.com/jpfuentes2) | >= 1.0
 | PHP | [@jpfuentes2](https://github.com/jpfuentes2) | roll the dice!
 | OCaml | [@tizoc](https://github.com/tizoc) | roll the dice! |
-| OCaml | [@andredublin](https://github.com/andredublin) | Xcode 6 |
+| Swift | [@andredublin](https://github.com/andredublin) | Xcode 6 |
 
 ### Notes
 
