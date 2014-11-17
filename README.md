@@ -58,8 +58,8 @@ Prisoner A (AlwaysCooperate): 0
 Prisoner B (AlwaysDefect):    50
 
 -- Swift --
-Prisoner A (Always Cooperate): 0
-Prisoner B (Always Defect):    50
+Prisoner A (AlwaysCooperate): 0
+Prisoner B (AlwaysDefect):    50
 
 -- PHP --
 JUST KIDDING!!
