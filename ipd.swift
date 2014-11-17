@@ -1,12 +1,3 @@
-//
-//  main.swift
-//  Iterated Prisoners Dilemma
-//
-//  Created by Andre Dublin on 11/16/14.
-//  Copyright (c) 2014 Andre Dublin. All rights reserved.
-
-import Foundation
-
 enum DecisionType: Int {
 	case Defect = 0
 	case Cooperate = 1
