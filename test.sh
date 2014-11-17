@@ -25,7 +25,7 @@ ocaml ipd.ml
 echo
 
 echo "-- Swift --"
-echo "Doh! Run in Xcode"
+xcrun swift ipd.swift
 echo
 
 echo "-- PHP --"
