@@ -82,9 +82,9 @@ func runGame(prisoners: [Prisoner], times: Int) {
 	}
 	
 	/*
-	 * Inclusive for in loop (i in 0...Array)
+	 * Exclusive for in loop (i in 0..<Array)
 	 */
-	for i in 0...times {
+	for i in 0..<times {
 		/*
 		 * Closure Syntax
 		 * { (paramters) -> return type in statements }
@@ -95,9 +95,6 @@ func runGame(prisoners: [Prisoner], times: Int) {
 		})
 	}
 	
-	/*
-	 * Exclusive for in loop (i in 0..<Array)
-	 */
 	for i in 0..<prisoners[0].decisions.count {
 		toBoth(prisoners, { (mover: Prisoner, opp: Prisoner) in
 			let score = Trial(mover: mover.decisions[i], opp: opp.decisions[i])[]
