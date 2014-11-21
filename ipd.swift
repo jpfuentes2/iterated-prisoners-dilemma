@@ -20,21 +20,19 @@ struct AlwaysCooperate : Strategy {
 }
 
 struct Trial {
-	let mover: Int, opp: Int
+	let mover: DecisionType, opp: DecisionType
 	
 	subscript() -> Int {
 		get {
 			switch (mover, opp) {
-			case (DecisionType.Cooperate.rawValue, DecisionType.Defect.rawValue):
+			case (.Cooperate, .Defect):
 				return 0
-			case (DecisionType.Defect.rawValue, DecisionType.Defect.rawValue):
+			case (.Defect, .Defect):
 				return 1
-			case (DecisionType.Cooperate.rawValue, DecisionType.Cooperate.rawValue):
+			case (.Cooperate, .Cooperate):
 				return 3
-			case (DecisionType.Defect.rawValue, DecisionType.Cooperate.rawValue):
+			case (.Defect, .Cooperate):
 				return 5
-			default:
-				return 0
 			}
 		}
 	}
@@ -44,7 +42,7 @@ class Prisoner : Strategy {
 	var name: String
 	var strategy: Strategy
 	var scores: [Int] = []
-	var decisions: [Int] = []
+	var decisions: [DecisionType] = []
 	var totalScore: Int = 0
 	
 	init(name: String, strategy: Strategy) {
@@ -65,7 +63,7 @@ func runGame(prisoners: [Prisoner], times: Int) {
 	
 	for i in 0..<times {
 		toBoth(prisoners, { (mover: Prisoner, opp: Prisoner) in
-			mover.decisions.append(mover.move(opp).rawValue)
+			mover.decisions.append(mover.move(opp))
 		})
 	}
 	
