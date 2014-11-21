@@ -39,8 +39,8 @@ struct Trial {
 }
 
 class Prisoner : Strategy {
-	var name: String
-	var strategy: Strategy
+	let name: String
+	let strategy: Strategy
 	var scores: [Int] = []
 	var decisions: [DecisionType] = []
 	var totalScore: Int = 0
