@@ -53,19 +53,19 @@ class Prisoner : Strategy {
 	}
 }
 
-func runGame<T: Prisoner>(ps: [T], times: Int) -> () -> (String, String) {
+func runGame(ps: [Prisoner], times: Int) -> () -> (String, String) {
 	return { results in
-		func swap(ps: [T], fn: (mover: T, opp: T) -> ()) {
+		func swap(ps: [Prisoner], fn: (mover: Prisoner, opp: Prisoner) -> ()) {
 			fn(mover: ps[0], opp: ps[1])
 			fn(mover: ps[1], opp: ps[0])
 		}
 		
 		for i in 0..<times {
-			swap(ps) { (mover: T, opp: T) in
+			swap(ps) { (mover: Prisoner, opp: Prisoner) in
 				mover.decisions.append(mover.move(opp))
 			}
 			
-			swap(ps) { (mover: T, opp: T) in
+			swap(ps) { (mover: Prisoner, opp: Prisoner) in
 				let score = Trial()[mover.decisions[i], opp.decisions[i]]
 				mover.scores.append(score)
 				mover.totalScore += score
