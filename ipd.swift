@@ -20,9 +20,7 @@ struct AlwaysCooperate : Strategy {
 }
 
 struct Trial {
-	let mover: DecisionType, opp: DecisionType
-	
-	subscript() -> Int {
+	subscript(mover: DecisionType, opp: DecisionType) -> Int {
 		get {
 			switch (mover, opp) {
 			case (.Cooperate, .Defect):
@@ -69,7 +67,7 @@ func runGame(prisoners: [Prisoner], times: Int) {
 	
 	for i in 0..<prisoners[0].decisions.count {
 		toBoth(prisoners, { (mover: Prisoner, opp: Prisoner) in
-			let score = Trial(mover: mover.decisions[i], opp: opp.decisions[i])[]
+			let score = Trial()[mover.decisions[i], opp.decisions[i]]
 			mover.scores.append(score)
 			mover.totalScore += score
 		})
