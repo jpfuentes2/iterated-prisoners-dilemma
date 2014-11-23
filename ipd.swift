@@ -43,7 +43,7 @@ class Prisoner : Strategy {
 	var decisions: [DecisionType] = []
 	var totalScore: Int = 0
 	
-	init(name: String, strategy: Strategy) {
+	init(_ name: String, _ strategy: Strategy) {
 		self.name = name
 		self.strategy = strategy
 	}
@@ -54,19 +54,19 @@ class Prisoner : Strategy {
 }
 
 func runGame(prisoners: [Prisoner], times: Int) {
-	func toBoth(ps: [Prisoner], fn: (mover: Prisoner, opp: Prisoner) -> ()) {
+	func swap(ps: [Prisoner], fn: (mover: Prisoner, opp: Prisoner) -> ()) {
 		fn(mover: ps[0], opp: ps[1])
 		fn(mover: ps[1], opp: ps[0])
 	}
 	
 	for i in 0..<times {
-		toBoth(prisoners, { (mover: Prisoner, opp: Prisoner) in
+		swap(prisoners, { (mover: Prisoner, opp: Prisoner) in
 			mover.decisions.append(mover.move(opp))
 		})
 	}
 	
 	for i in 0..<prisoners[0].decisions.count {
-		toBoth(prisoners, { (mover: Prisoner, opp: Prisoner) in
+		swap(prisoners, { (mover: Prisoner, opp: Prisoner) in
 			let score = Trial()[mover.decisions[i], opp.decisions[i]]
 			mover.scores.append(score)
 			mover.totalScore += score
@@ -76,8 +76,8 @@ func runGame(prisoners: [Prisoner], times: Int) {
 
 func main() {
 	let prisoners: [Prisoner] = [
-		Prisoner(name: "a", strategy: AlwaysCooperate()),
-		Prisoner(name: "b", strategy: AlwaysDefect())
+		Prisoner("a", AlwaysCooperate()),
+		Prisoner("b", AlwaysDefect())
 	]
 	
 	runGame(prisoners, 10)
