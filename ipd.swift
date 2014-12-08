@@ -1,20 +1,20 @@
-enum DecisionType: Int {
-	case Defect = 0
-	case Cooperate = 1
+enum DecisionType {
+	case Defect
+	case Cooperate
 }
 
 protocol Strategy {
-	func move() -> DecisionType
+	func move(opponent: Prisoner) -> DecisionType
 }
 
 struct AlwaysDefect : Strategy {
-	func move() -> DecisionType {
+	func move(opponent: Prisoner) -> DecisionType {
 		return DecisionType.Defect
 	}
 }
 
 struct AlwaysCooperate : Strategy {
-	func move() -> DecisionType {
+	func move(opponent: Prisoner) -> DecisionType {
 		return DecisionType.Cooperate
 	}
 }
@@ -48,8 +48,8 @@ class Prisoner : Strategy {
 		self.strategy = strategy
 	}
 	
-	func move() -> DecisionType {
-		return strategy.move()
+	func move(mover: Prisoner) -> DecisionType {
+		return strategy.move(mover)
 	}
 }
 
@@ -62,7 +62,7 @@ func runGame(ps: [Prisoner], times: Int) -> () -> (String, String) {
 		
 		for i in 0..<times {
 			swap(ps) { (mover: Prisoner, opp: Prisoner) in
-				mover.decisions.append(mover.move())
+				mover.decisions.append(mover.move(opp))
 			}
 			
 			swap(ps) { (mover: Prisoner, opp: Prisoner) in
