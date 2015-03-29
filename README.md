@@ -102,7 +102,5 @@ JUST KIDDING!!
 
 A big thank you to these contributors:
 
-* [@tizoc](https://github.com/tizoc)
-
-Also, thanks to [@joxn](https://github.com/joxn) for improving the
+[@tizoc](https://github.com/tizoc), for the ocaml version and to [@joxn](https://github.com/joxn) for improving the
 Haskell version. You can see my initial pathetic attempt [here](https://gist.github.com/jpfuentes2/9317779#file-ipd-hs).
