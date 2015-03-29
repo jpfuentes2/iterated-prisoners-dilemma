@@ -69,7 +69,7 @@ JUST KIDDING!!
 
 | Language | Contributor | Deps/Version |
 | -------- | ----------- | ------- |
-| Haskell | [@jpfuentes2](https://github.com/jpfuentes2) | roll the dice! |
+| Haskell | [@jpfuentes2](https://github.com/jpfuentes2) [ @joxn](https://github.com/joxn) | roll the dice! |
 | Scala | [@jpfuentes2](https://github.com/jpfuentes2) | roll the dice!
 | Ruby | [@jpfuentes2](https://github.com/jpfuentes2) | >= 2.0
 | Clojure | [@jpfuentes2](https://github.com/jpfuentes2) | `lein exec`
