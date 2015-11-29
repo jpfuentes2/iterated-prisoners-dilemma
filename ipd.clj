@@ -1,58 +1,33 @@
 (defn prisoner [name strategy]
-  {:name name :strategy strategy :moves '() :scores '() :total-score 0})
+  {:name name :strategy strategy})
 
-(def defect 0)
+(def score {
+    [:cooperate :defect] [0 5]
+    [:defect :defect] [1 1]
+    [:cooperate :cooperate] [1 1]
+    [:defect :cooperate] [5 0]})
 
-(def cooperate 1)
+(defn game
+  [p1 p2]
+  (let [s1 (partial (:strategy p1) p2)
+        s2 (partial (:strategy p2) p1)]
+    (repeatedly
+     (fn []
+       (score [(s1) (s2)])))))
 
-(defn AlwaysDefect [mover opponent]
-  defect)
+(defn game-score
+  [result]
+  [(reduce + (map first result))
+   (reduce + (map second result))])
 
-(defn AlwaysCooperate [mover opponent]
-  cooperate)
+(defn play-game
+  [moves-count a b]
+  (->> (game a b)
+       (take moves-count)
+       game-score))
 
-(defn game [& prisoners]
-  (map (fn [mover opponent]
-         (->> (map :moves [mover, opponent])
-              (apply (:strategy mover))
-              (update-in mover [:moves] conj)))
-        prisoners
-        (reverse prisoners)))
-
-(defn iterated-game [iterations & prisoners]
-  (reduce (fn [ps _] (apply game ps))
-          prisoners
-          (range 0 iterations)))
-
-(def scores {[1 0] 0
-             [0 0] 1
-             [1 1] 3
-             [0 1] 5})
-
-(defn compute-scores [prisoners moves]
-  (map (fn [prisoner moves]
-         (let [point (get scores moves)
-               scores (:scores prisoner)
-               total (:total-score prisoner)]
-           (assoc prisoner
-             :scores (conj scores point)
-             :total-score (+ total point))))
-       prisoners
-       [moves (reverse moves)]))
-
-(defn total-scores [& prisoners]
-  (let [move-pairs (->> (map :moves prisoners)
-                        (apply interleave)
-                        (partition 2))]
-    (reduce compute-scores prisoners move-pairs)))
-
-(->> [(prisoner :a AlwaysCooperate) (prisoner :b AlwaysDefect)]
-     (apply iterated-game 10)
-     (apply total-scores)
-     (map (fn [prisoner]
-            (format "Prisoner %s (%s): %d"
-                    (-> (:name prisoner) name .toUpperCase)
-                    (->> (:strategy prisoner) str (re-matches #".*\$(.*)\@.*") last)
-                    (:total-score prisoner))))
-     (clojure.string/join "\n")
-      println)
+(let [[a-score b-score] (play-game 10
+                                   (prisoner "A" (constantly :cooperate))
+                                   (prisoner "B" (constantly :defect)))]
+  (println "Prisoner A (AlwaysCooperate):" a-score)
+  (println "Prisoner B (AlwaysDefect)   :" b-score))

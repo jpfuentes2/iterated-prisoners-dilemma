@@ -72,7 +72,7 @@ JUST KIDDING!!
 | Haskell | [@jpfuentes2](https://github.com/jpfuentes2) [ @joxn](https://github.com/joxn) | roll the dice! |
 | Scala | [@jpfuentes2](https://github.com/jpfuentes2) | roll the dice!
 | Ruby | [@jpfuentes2](https://github.com/jpfuentes2) | >= 2.0
-| Clojure | [@jpfuentes2](https://github.com/jpfuentes2) | `lein exec`
+| Clojure | [@jpfuentes2](https://github.com/jpfuentes2) [@narma](https://github.com/narma) | `lein exec`
 | Go | [@jpfuentes2](https://github.com/jpfuentes2) | >= 1.0
 | PHP | [@jpfuentes2](https://github.com/jpfuentes2) | roll the dice!
 | OCaml | [@tizoc](https://github.com/tizoc) | roll the dice! |
